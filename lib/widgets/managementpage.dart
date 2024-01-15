@@ -1,0 +1,161 @@
+import 'package:untitled4/widgets/addbook.dart';
+import 'package:untitled4/widgets/editbook.dart';
+import '/widgets/components/my_drawer.dart';
+import '/models/user_interface.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/book.dart';
+
+
+
+class ManagementPage extends StatefulWidget {
+  @override
+  _ManagementPage createState() => _ManagementPage();
+}
+
+class _ManagementPage extends State<ManagementPage> {
+  List<Book> books = [
+    Book(
+      title: 'Lập Trình Flutter',
+      author: 'Nguyễn Văn A',
+      coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+    ),
+    Book(
+      title: 'Học Dart từ cơ bản đến nâng cao',
+      author: 'Trần Thị B',
+      coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      quantity: 5,
+      category: 'Ngôn ngữ lập trình',
+    ),
+    Book(
+      title: 'Học Dart từ cơ bản đến nâng cao',
+      author: 'Trần Thị B',
+      coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      quantity: 5,
+      category: 'Ngôn ngữ lập trình',
+    ),
+    Book(
+      title: 'Học Dart từ cơ bản đến nâng cao',
+      author: 'Trần Thị B',
+      coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      quantity: 5,
+      category: 'Ngôn ngữ lập trình',
+    ),
+  ]; // Danh sách sách và tài liệu
+
+  void _addBook(Book book) {
+    setState(() {
+      books.add(book);
+    });
+  }
+
+  void _editBook(Book bookToEdit) {
+    // Mở trang chỉnh sửa hoặc hộp thoại với thông tin của bookToEdit
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => EditBookPage(
+            book: bookToEdit,
+          onSaved: () {
+            // Hàm này sẽ được gọi sau khi sách được lưu
+            setState(() {
+              // Cập nhật dữ liệu trang quản lý ở đây
+            });
+          },
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    int totalQuantity = books.fold(0, (sum, book) => sum + book.quantity);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Quản Lý Sách và Tài Liệu'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(child: Text('Tổng số lượng: $totalQuantity')),
+          ),
+        ],
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1 / 2, // Tỉ lệ chiều rộng và chiều cao của sách
+        ),
+        itemCount: books.length,
+        itemBuilder: (context, index) {
+          final book = books[index];
+          return Card(
+            child: Column(
+              children: <Widget>[
+                Image.network(book.coverImage, fit: BoxFit.cover), // Hiển thị ảnh bìa
+                Text(book.title, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('Tác giả: ${book.author}'),
+                Text('Số lượng: ${book.quantity}'),
+                Text('Thể loại: ${book.category}'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () {
+                        _editBook(books[index]);
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Xác nhận'),
+                              content: Text('Bạn có chắc chắn muốn xóa sách này không?'),
+                              actions: <Widget>[
+                               ElevatedButton(
+                                  child: Text('Hủy'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Đóng hộp thoại mà không xóa
+                                  },
+                                ),
+                                ElevatedButton(
+                                  child: Text('Xóa'),
+                                  onPressed: () {
+                                    setState(() {
+                                      books.removeAt(index); // Xóa sách tại vị trí index
+                                      Navigator.of(context).pop(); // Đóng hộp thoại sau khi xóa
+                                    });
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => AddBookPage(onAddBook: _addBook),
+            ),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
