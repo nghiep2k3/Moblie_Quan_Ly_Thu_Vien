@@ -8,6 +8,7 @@ import '../models/book.dart';
 
 
 
+
 class ManagementPage extends StatefulWidget {
   @override
   _ManagementPage createState() => _ManagementPage();
@@ -56,7 +57,7 @@ class _ManagementPage extends State<ManagementPage> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => EditBookPage(
-            book: bookToEdit,
+          book: bookToEdit,
           onSaved: () {
             // Hàm này sẽ được gọi sau khi sách được lưu
             setState(() {
@@ -71,6 +72,7 @@ class _ManagementPage extends State<ManagementPage> {
   @override
   Widget build(BuildContext context) {
     int totalQuantity = books.fold(0, (sum, book) => sum + book.quantity);
+    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -84,20 +86,47 @@ class _ManagementPage extends State<ManagementPage> {
       ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 1 / 2, // Tỉ lệ chiều rộng và chiều cao của sách
+          crossAxisCount: width > 600 ? 3 : 2, // Adjust the number of columns based on screen width
+          childAspectRatio: (1 / 1.2), // Adjust the aspect ratio
         ),
         itemCount: books.length,
         itemBuilder: (context, index) {
           final book = books[index];
           return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0), // Rounded corners
+            ),
+            elevation: 5.0, // Card shadow
             child: Column(
               children: <Widget>[
-                Image.network(book.coverImage, fit: BoxFit.cover), // Hiển thị ảnh bìa
-                Text(book.title, style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('Tác giả: ${book.author}'),
-                Text('Số lượng: ${book.quantity}'),
-                Text('Thể loại: ${book.category}'),
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+                    child: Image.network(
+                      book.coverImage,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: double.maxFinite,
+                      // Placeholder and error handling can be added here
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:<Widget> [
+                      Text(
+                        book.title,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text('Tác giả: ${book.author}'),
+                      Text('Số lượng: ${book.quantity}'),
+                      Text('Thể loại: ${book.category}'),
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -117,7 +146,7 @@ class _ManagementPage extends State<ManagementPage> {
                               title: Text('Xác nhận'),
                               content: Text('Bạn có chắc chắn muốn xóa sách này không?'),
                               actions: <Widget>[
-                               ElevatedButton(
+                                ElevatedButton(
                                   child: Text('Hủy'),
                                   onPressed: () {
                                     Navigator.of(context).pop(); // Đóng hộp thoại mà không xóa
