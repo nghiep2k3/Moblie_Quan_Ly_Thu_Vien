@@ -87,28 +87,27 @@ class _ManagementPage extends State<ManagementPage> {
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: width > 600 ? 3 : 2, // Adjust the number of columns based on screen width
-          childAspectRatio: (1 / 1.2), // Adjust the aspect ratio
+          childAspectRatio: (1 / 1.5), // Adjust the aspect ratio
         ),
         itemCount: books.length,
         itemBuilder: (context, index) {
           final book = books[index];
+          // Tính toán kích thước ảnh dựa trên kích thước màn hình
+          double screenWidth = MediaQuery.of(context).size.width;
+          double imageHeight = screenWidth / 3; // Ví dụ: chiều cao ảnh = 1/3 chiều rộng màn hình
           return Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0), // Rounded corners
             ),
             elevation: 5.0, // Card shadow
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start, // Căn chỉnh các widget con về phía bắt đầu (trái)
               children: <Widget>[
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
-                    child: Image.network(
-                      book.coverImage,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      height: double.maxFinite,
-                      // Placeholder and error handling can be added here
-                    ),
+                AspectRatio(
+                  aspectRatio: 3 / 2, // Tỷ lệ cho ảnh, ví dụ 3:2
+                  child: Image.network(
+                    book.coverImage,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Padding(
