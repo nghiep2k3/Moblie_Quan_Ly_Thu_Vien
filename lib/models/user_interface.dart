@@ -43,24 +43,27 @@ class UserInterface with ChangeNotifier {
   }
 
   double get fontSize => _fontSize;
-
+  List<BorrowerInfo> borrowers = [];
   // nhận thông tin
-  String borrowerName = "";
-  String borrowerIdCard = "";
-  String borrowerPhone = "";
-  String borrowerBookCode = "";
-
-  void setBorrowerInfo({
+  void addBorrower({
     required String name,
     required String idCard,
     required String phone,
     required String bookCode,
   }) {
-    borrowerName = name;
-    borrowerIdCard = idCard;
-    borrowerPhone = phone;
-    borrowerBookCode = bookCode;
+    BorrowerInfo borrower = BorrowerInfo(
+      borrowerName: name,
+      borrowerIdCard: idCard,
+      borrowerPhone: phone,
+      borrowerBookCode: bookCode,
+    );
 
+    borrowers.add(borrower);
+    notifyListeners();
+  }
+
+  void removeBorrower(BorrowerInfo borrower) {
+    borrowers.remove(borrower);
     notifyListeners();
   }
 }

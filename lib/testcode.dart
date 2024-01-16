@@ -93,9 +93,15 @@ class _MyApp2State extends State<MyApp2> {
           ),
           actions: <Widget>[
             TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Hủy'),
+            ),
+            TextButton(
               onPressed: () async {
                 Provider.of<UserInterface>(context, listen: false)
-                    .setBorrowerInfo(
+                    .addBorrower(
                   name: nameController.text,
                   idCard: idCardController.text,
                   phone: phoneController.text,
@@ -116,12 +122,7 @@ class _MyApp2State extends State<MyApp2> {
               },
               child: const Text('Mượn sách'),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Hủy'),
-            ),
+            
           ],
         );
       },

@@ -10,6 +10,7 @@ class MyDrawer extends StatelessWidget {
         children: [
           ListTile(
             title: const Text("Trang chủ"),
+            leading: const Icon(Icons.home),
             onTap: () => Navigator.of(context).popAndPushNamed("/"),
           ),
           ListTile(

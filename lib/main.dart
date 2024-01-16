@@ -19,20 +19,16 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => UserInterface(),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: "/",
-        routes: {
-          "/": (context) => MyHomePage(),
-          "/settings": (context) => MySettings(),
-          "/quanly" : (context) => ManagementPage(),
-          "/thongtin" : (context) => Info(),
-          "/muonsach" : (context) =>  Muonsach(),
-          "/testcode" : (context) =>  MyApp2(),
-
-        }
-      ),
+          debugShowCheckedModeBanner: false,
+          initialRoute: "/",
+          routes: {
+            "/": (context) => MyHomePage(),
+            "/settings": (context) => MySettings(),
+            "/quanly": (context) => ManagementPage(),
+            "/thongtin": (context) => Info(),
+            "/muonsach": (context) => Muonsach(),
+            "/testcode": (context) => MyApp2(),
+          }),
     );
   }
 }
-
-
