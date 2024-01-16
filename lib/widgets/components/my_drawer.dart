@@ -27,6 +27,11 @@ class MyDrawer extends StatelessWidget {
             title: const Text("Settings"),
             onTap: () => Navigator.of(context).popAndPushNamed("/settings"),
           ),
+          ListTile(
+            leading: const Icon(Icons.developer_board),
+            title: const Text("Test"),
+            onTap: () => Navigator.of(context).popAndPushNamed("/testcode"),
+          ),
         ],
       ),
     );

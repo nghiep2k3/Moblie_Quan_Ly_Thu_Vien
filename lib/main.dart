@@ -1,3 +1,4 @@
+import 'package:untitled4/testcode.dart';
 import './widgets/addbook.dart';
 import '../widgets/managementpage.dart';
 import '/widgets/homepage.dart';
@@ -17,15 +18,19 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => UserInterface(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         initialRoute: "/",
         routes: {
           "/": (context) => MyHomePage(),
           "/settings": (context) => MySettings(),
           "/quanly" : (context) => ManagementPage(),
           "/muonsach" : (context) =>  Muonsach(),
+          "/testcode" : (context) =>  MyApp2(),
 
         }
       ),
     );
   }
 }
+
+
