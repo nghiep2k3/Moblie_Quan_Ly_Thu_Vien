@@ -47,36 +47,36 @@ class _EditBookPageState extends State<EditBookPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chỉnh Sửa Sách'),
+        title: const Text('Chỉnh Sửa Sách'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
             TextField(
               controller: _titleController,
-              decoration: InputDecoration(labelText: 'Tên sách'),
+              decoration: const InputDecoration(labelText: 'Tên sách'),
             ),
             TextField(
               controller: _authorController,
-              decoration: InputDecoration(labelText: 'Tác giả'),
+              decoration: const InputDecoration(labelText: 'Tác giả'),
             ),
             TextField(
               controller: _coverImageController,
-              decoration: InputDecoration(labelText: 'URL Ảnh bìa'),
+              decoration: const InputDecoration(labelText: 'URL Ảnh bìa'),
             ),
             TextField(
               controller: _quantityController,
-              decoration: InputDecoration(labelText: 'Số lượng'),
+              decoration: const InputDecoration(labelText: 'Số lượng'),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: _categoryController,
-              decoration: InputDecoration(labelText: 'Thể loại'),
+              decoration: const InputDecoration(labelText: 'Thể loại'),
             ),
             ElevatedButton(
               onPressed: _saveBook,
-              child: Text('Lưu Thay Đổi'),
+              child: const Text('Lưu Thay Đổi'),
             ),
           ],
         ),

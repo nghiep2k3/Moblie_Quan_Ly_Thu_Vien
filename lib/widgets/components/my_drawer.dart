@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
           ListTile(
-            title: Text("Trang chủ"),
+            title: const Text("Trang chủ"),
             onTap: () => Navigator.of(context).popAndPushNamed("/"),
           ),
           ListTile(
-            title: Text("Settings"),
-            onTap: () => Navigator.of(context).popAndPushNamed("/settings"),
+            leading: const Icon(Icons.person),
+            title: const Text("Quản lý"),
+            onTap: () => Navigator.of(context).popAndPushNamed("/quanly"),
           ),
           ListTile(
-            title: Text("Quản lý"),
-            onTap: () => Navigator.of(context).popAndPushNamed("/quanly"),
+            leading: const Icon(Icons.library_books),
+            title: const Text("Mượn sách"),
+            onTap: () => Navigator.of(context).popAndPushNamed("/muonsach"),
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text("Settings"),
+            onTap: () => Navigator.of(context).popAndPushNamed("/settings"),
           ),
         ],
       ),
