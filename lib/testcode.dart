@@ -56,7 +56,7 @@ class _MyApp2State extends State<MyApp2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Searchable Text Example')),
+      appBar: AppBar(title: const Text('Mượn sách')),
       body: Column(
         children: [
           Padding(
@@ -68,7 +68,6 @@ class _MyApp2State extends State<MyApp2> {
                   if (searchQuery.isEmpty) {
                     results = allBooks;
                   } else {
-                    // If search query is not empty, filter books
                     results = allBooks
                         .where((book) => book.title
                             .toLowerCase()
@@ -82,7 +81,7 @@ class _MyApp2State extends State<MyApp2> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.0),
                 ),
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
               ),
             ),
           ),
@@ -91,13 +90,31 @@ class _MyApp2State extends State<MyApp2> {
               itemBuilder: (BuildContext context, int index) {
                 var item = results[index];
                 return ListTile(
-                  title: Text(
-                    item.title, // Use Text widget instead of SearchableText
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 11,
-                      fontFamily: 'nexaRegular',
-                    ),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.title,
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 18,
+                          fontFamily: 'nexaRegular',
+                        ),
+                      ),
+                      Text(
+                        'Số lượng: ${item.quantity}',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  trailing: ElevatedButton(
+                    onPressed: () {
+                      _showDialog(); // Function to show the dialog
+                    },
+                    child: const Text('Mượn sách'),
                   ),
                 );
               },
@@ -106,6 +123,27 @@ class _MyApp2State extends State<MyApp2> {
           ),
         ],
       ),
+    );
+  }
+
+  // Function to show the dialog
+  Future<void> _showDialog() async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title:  const Center(child: Text('Xin chào')),
+          content: const Text('Chào mừng bạn đến với ứng dụng mượn sách!'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Đóng'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
