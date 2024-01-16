@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled4/models/book.dart';
+import 'package:untitled4/models/user_interface.dart';
 
 class MyApp2 extends StatefulWidget {
   const MyApp2({Key? key}) : super(key: key);
@@ -46,11 +48,84 @@ class _MyApp2State extends State<MyApp2> {
   ];
   List<Book> results = [];
 
-  // trạng thái ban đầu
   @override
   void initState() {
     super.initState();
     results = allBooks;
+  }
+
+  Future<void> _showDialog(Book selectedBook) async {
+    TextEditingController nameController = TextEditingController();
+    TextEditingController idCardController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
+    TextEditingController bookCodeController = TextEditingController();
+
+    // thông tin từ đây gửi sang bên info.dart
+
+    await showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Center(child: Text('Thông tin mượn sách')),
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Tên người mượn',
+                  ),
+                ),
+                TextField(
+                  controller: idCardController,
+                  decoration: const InputDecoration(labelText: 'Số căn cước'),
+                ),
+                TextField(
+                  controller: phoneController,
+                  decoration: const InputDecoration(labelText: 'Số điện thoại'),
+                ),
+                TextField(
+                  controller: bookCodeController,
+                  decoration: const InputDecoration(labelText: 'Mã sách'),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () async {
+                Provider.of<UserInterface>(context, listen: false)
+                    .setBorrowerInfo(
+                  name: nameController.text,
+                  idCard: idCardController.text,
+                  phone: phoneController.text,
+                  bookCode: bookCodeController.text,
+                );
+                // Process the entered information, e.g., print or save to a database
+                print('Tên: ${nameController.text}');
+                print('Số căn cước: ${idCardController.text}');
+                print('Số điện thoại: ${phoneController.text}');
+                print('Mã sách: ${bookCodeController.text}');
+
+                // Decrease the quantity of the selected book by 1
+                setState(() {
+                  selectedBook.quantity -= 1;
+                });
+
+                Navigator.of(context).pop();
+              },
+              child: const Text('Mượn sách'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Hủy'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -112,7 +187,7 @@ class _MyApp2State extends State<MyApp2> {
                   ),
                   trailing: ElevatedButton(
                     onPressed: () {
-                      _showDialog(); // Function to show the dialog
+                      _showDialog(item);
                     },
                     child: const Text('Mượn sách'),
                   ),
@@ -123,27 +198,6 @@ class _MyApp2State extends State<MyApp2> {
           ),
         ],
       ),
-    );
-  }
-
-  // Function to show the dialog
-  Future<void> _showDialog() async {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title:  const Center(child: Text('Xin chào')),
-          content: const Text('Chào mừng bạn đến với ứng dụng mượn sách!'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Đóng'),
-            ),
-          ],
-        );
-      },
     );
   }
 }

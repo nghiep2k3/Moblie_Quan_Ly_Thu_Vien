@@ -13,7 +13,7 @@ class MyDrawer extends StatelessWidget {
             onTap: () => Navigator.of(context).popAndPushNamed("/"),
           ),
           ListTile(
-            leading: const Icon(Icons.person),
+            leading: const Icon(Icons.manage_accounts),
             title: const Text("Quản lý"),
             onTap: () => Navigator.of(context).popAndPushNamed("/quanly"),
           ),
@@ -23,8 +23,13 @@ class MyDrawer extends StatelessWidget {
             onTap: () => Navigator.of(context).popAndPushNamed("/muonsach"),
           ),
           ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text("Thông tin người mượn"),
+            onTap: () => Navigator.of(context).popAndPushNamed("/thongtin"),
+          ),
+          ListTile(
             leading: const Icon(Icons.settings),
-            title: const Text("Settings"),
+            title: const Text("Cài đặt"),
             onTap: () => Navigator.of(context).popAndPushNamed("/settings"),
           ),
           ListTile(
