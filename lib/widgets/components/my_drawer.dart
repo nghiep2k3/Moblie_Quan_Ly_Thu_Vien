@@ -24,6 +24,11 @@ class MyDrawer extends StatelessWidget {
             onTap: () => Navigator.of(context).popAndPushNamed("/muonsach"),
           ),
           ListTile(
+            leading: const Icon(Icons.book),
+            title: const Text("Trả sách"),
+            onTap: () => Navigator.of(context).popAndPushNamed("/trasach"),
+          ),
+          ListTile(
             leading: const Icon(Icons.person),
             title: const Text("Thông tin người mượn"),
             onTap: () => Navigator.of(context).popAndPushNamed("/thongtin"),

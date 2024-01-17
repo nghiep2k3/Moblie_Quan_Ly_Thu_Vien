@@ -1,4 +1,5 @@
 import 'package:untitled4/testcode.dart';
+import 'package:untitled4/widgets/return_book.dart';
 import './widgets/addbook.dart';
 import '../widgets/managementpage.dart';
 import '/widgets/homepage.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
             "/quanly": (context) => ManagementPage(),
             "/thongtin": (context) => Info(),
             "/muonsach": (context) => Muonsach(),
+            "/trasach": (context) => ReturnBook(),
             "/testcode": (context) => MyApp2(),
           }),
     );
