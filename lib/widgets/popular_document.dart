@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:untitled4/models/document.dart';
 
 class PopularDocument extends StatelessWidget {
-  List<Document> documentList = [
+  PopularDocument({super.key});
+  final List<Document> documentList = [
     Document(
         title: 'Lập Trình Flutter',
         coverImage:

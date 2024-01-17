@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled4/widgets/news.dart';
 import 'package:untitled4/widgets/popular_document.dart';
@@ -10,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;

@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:untitled4/models/news.dart';
 
 class NewsManagement extends StatelessWidget {
-//   const NewsManagement({super.key});
-  List<News> news = [
+  NewsManagement({super.key});
+  final List<News> news = [
     News(
         title: 'Lập Trình Flutter',
         date: DateTime.parse('2021-06-23'),

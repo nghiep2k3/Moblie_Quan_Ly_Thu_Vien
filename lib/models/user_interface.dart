@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import '../models/user.dart';
 
 class UserInterface with ChangeNotifier {
-  static List<String> listColorAppBar = <String>['Grey', 'Purple', 'Red', 'Green', 'Blue'];
+  static List<String> listColorAppBar = <String>[
+    'Grey',
+    'Purple',
+    'Red',
+    'Green',
+    'Blue'
+  ];
 
   double _fontSize = 15;
   String _appBarColor = 'Grey';
@@ -12,13 +19,19 @@ class UserInterface with ChangeNotifier {
   }
 
   Color get appBarColor {
-    switch(_appBarColor) {
-      case 'Grey': return Colors.grey;
-      case 'Purple': return Colors.purple;
-      case 'Red': return Colors.red;
-      case 'Green': return Colors.green;
-      case 'Blue': return Colors.blue;
-      default: return Colors.white;
+    switch (_appBarColor) {
+      case 'Grey':
+        return Colors.grey;
+      case 'Purple':
+        return Colors.purple;
+      case 'Red':
+        return Colors.red;
+      case 'Green':
+        return Colors.green;
+      case 'Blue':
+        return Colors.blue;
+      default:
+        return Colors.white;
     }
   }
 
@@ -30,4 +43,27 @@ class UserInterface with ChangeNotifier {
   }
 
   double get fontSize => _fontSize;
+  List<BorrowerInfo> borrowers = [];
+  // nhận thông tin
+  void addBorrower({
+    required String name,
+    required String idCard,
+    required String phone,
+    required String bookCode,
+  }) {
+    BorrowerInfo borrower = BorrowerInfo(
+      borrowerName: name,
+      borrowerIdCard: idCard,
+      borrowerPhone: phone,
+      borrowerBookCode: bookCode,
+    );
+
+    borrowers.add(borrower);
+    notifyListeners();
+  }
+
+  void removeBorrower(BorrowerInfo borrower) {
+    borrowers.remove(borrower);
+    notifyListeners();
+  }
 }
