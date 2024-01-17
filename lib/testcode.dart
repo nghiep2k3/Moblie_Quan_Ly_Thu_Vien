@@ -210,7 +210,7 @@ class _MyApp2State extends State<MyApp2> {
       builder: (context, ui, child) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Mượn sách'),
+            title: const Text('Nhà phát triển'),
             centerTitle: true,
             backgroundColor: ui.appBarColor,
           ),

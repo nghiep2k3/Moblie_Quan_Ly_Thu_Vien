@@ -76,7 +76,7 @@ class _ManagementPage extends State<ManagementPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quản Lý Sách và Tài Liệu'),
+        title: const Text('Quản Lý Sách và Tài Liệu'),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -111,13 +111,13 @@ class _ManagementPage extends State<ManagementPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children:<Widget> [
                       Text(
                         book.title,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text('Tác giả: ${book.author}'),
@@ -130,29 +130,29 @@ class _ManagementPage extends State<ManagementPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.edit),
+                      icon: const Icon(Icons.edit),
                       onPressed: () {
                         _editBook(books[index]);
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.delete),
+                      icon: const Icon(Icons.delete),
                       onPressed: () {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Xác nhận'),
-                              content: Text('Bạn có chắc chắn muốn xóa sách này không?'),
+                              title: const Text('Xác nhận'),
+                              content: const Text('Bạn có chắc chắn muốn xóa sách này không?'),
                               actions: <Widget>[
                                 ElevatedButton(
-                                  child: Text('Hủy'),
+                                  child: const Text('Hủy'),
                                   onPressed: () {
                                     Navigator.of(context).pop(); // Đóng hộp thoại mà không xóa
                                   },
                                 ),
                                 ElevatedButton(
-                                  child: Text('Xóa'),
+                                  child: const Text('Xóa'),
                                   onPressed: () {
                                     setState(() {
                                       books.removeAt(index); // Xóa sách tại vị trí index
@@ -181,7 +181,7 @@ class _ManagementPage extends State<ManagementPage> {
             ),
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

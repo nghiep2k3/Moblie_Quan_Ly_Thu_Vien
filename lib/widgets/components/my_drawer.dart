@@ -40,7 +40,7 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.developer_board),
-            title: const Text("Test"),
+            title: const Text("Chế độ nhà phát triển"),
             onTap: () => Navigator.of(context).popAndPushNamed("/testcode"),
           ),
         ],
