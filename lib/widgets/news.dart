@@ -64,7 +64,8 @@ class NewsManagement extends StatelessWidget {
                   maxLines: 2,
                 ),
               ),
-              Text(DateFormat('dd/MM/yyyy').format(news[index].date)),
+              Text(DateFormat('dd/MM/yyyy').format(news[index].date),
+                  style: const TextStyle(fontSize: 12)),
             ]),
           ),
         );
