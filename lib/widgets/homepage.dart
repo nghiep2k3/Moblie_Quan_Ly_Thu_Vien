@@ -1,5 +1,6 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:untitled4/widgets/news.dart';
+import 'package:untitled4/models/news.dart';
+import 'package:untitled4/widgets/news_list.dart';
 import 'package:untitled4/widgets/popular_document.dart';
 
 import '/widgets/components/my_drawer.dart';
@@ -265,7 +266,7 @@ class MyHomePage extends StatelessWidget {
                                     bottom: BorderSide(
                                         color: Colors.grey, width: 1)),
                               ),
-                              child: NewsManagement(),
+                              child: NewsList(),
                             ),
                           ),
                         ],
