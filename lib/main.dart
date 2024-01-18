@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './widgets/muonsach.dart';
 import './widgets/info.dart';
+import '../widgets/theme_provider.dart';
 
 main() => runApp(const MyApp());
 
@@ -34,3 +35,43 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return ChangeNotifierProvider(
+//       create: (context) => ThemeProvider(),
+//       child: Consumer<ThemeProvider>(
+//         builder: (context, themeProvider, child) {
+//           return MaterialApp(
+//             title: 'Dark Mode Example',
+//             theme: ThemeData.light(),
+//             darkTheme: ThemeData.dark(),
+//             themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+//             home: MyHomePage(),
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Dark Mode Example'),
+//       ),
+//       body: Center(
+//         child: Text('Hello World!'),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: () {
+//           Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+//         },
+//         child: Icon(Icons.lightbulb),
+//       ),
+//     );
+//   }
+// }
