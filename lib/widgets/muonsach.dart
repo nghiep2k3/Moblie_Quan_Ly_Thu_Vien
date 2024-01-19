@@ -12,6 +12,7 @@ class Muonsach extends StatefulWidget {
 
 class _MyApp2State extends State<Muonsach> {
   var searchQuery = " ";
+  bool isDarkMode = false; // Thêm thuộc tính isDarkMode
   List<Book> allBooks = [
     Book(
       title: 'Lập Trình Flutter',
@@ -244,7 +245,7 @@ class _MyApp2State extends State<Muonsach> {
           backgroundColor: ui.appBarColor,
         ),
         body: Container(
-          color: ui.isDarkMode ? Colors.grey : Colors.white,
+          color: ui.isDarkMode ? const Color.fromARGB(255, 0, 0, 0) : Colors.white,
           child: Column(
             children: [
               Padding(

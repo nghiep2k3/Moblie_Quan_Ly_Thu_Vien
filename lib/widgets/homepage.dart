@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
               color: ui.isDarkMode ? Colors.white : Colors.black,
             ),
             child: Container(
-                color: ui.isDarkMode ? Colors.grey : Colors.white,
+                color: ui.isDarkMode ? const Color.fromARGB(255, 0, 0, 0) : Colors.white,
                 padding: EdgeInsets.all(20.0),
                 child: SingleChildScrollView(
                   child: Column(children: <Widget>[

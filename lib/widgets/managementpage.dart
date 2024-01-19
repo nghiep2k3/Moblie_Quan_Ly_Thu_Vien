@@ -88,7 +88,7 @@ class _ManagementPage extends State<ManagementPage> {
           ],
         ),
         body: Container(
-          color: ui.isDarkMode ? Colors.grey : Colors.white,
+          color: ui.isDarkMode ? Color.fromARGB(255, 0, 0, 0) : Colors.white,
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: width > 600
