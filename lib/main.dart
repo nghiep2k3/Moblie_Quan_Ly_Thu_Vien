@@ -1,4 +1,6 @@
 import 'package:untitled4/testcode.dart';
+import 'package:untitled4/widgets/news_list.dart';
+import 'package:untitled4/widgets/news_management.dart';
 import 'package:untitled4/widgets/return_book.dart';
 import './widgets/addbook.dart';
 import '../widgets/managementpage.dart';
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
             "/": (context) => MyHomePage(),
             "/settings": (context) => MySettings(),
             "/quanly": (context) => ManagementPage(),
+            "/quanly_tintuc": (context) => NewsManagement(),
             "/thongtin": (context) => Info(),
             "/muonsach": (context) => Muonsach(),
             "/trasach": (context) => ReturnBook(),
