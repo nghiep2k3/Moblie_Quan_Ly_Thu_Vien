@@ -22,9 +22,8 @@ class Info extends StatelessWidget {
                 ? const Center(
                     child: Text(
                       'Không có dữ liệu.',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   )
                 : ListView.builder(
@@ -41,6 +40,18 @@ class Info extends StatelessWidget {
   }
 
   Widget buildBorrowerCard(BuildContext context, BorrowerInfo borrower) {
+    bool deleteSuccessMessageShown = false;
+    void _showDeleteSuccessSnackBar() {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: Colors.red,
+          content: Text('Xóa người mượn thành công'),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+      deleteSuccessMessageShown = true;
+    }
+
     return SizedBox(
       width: 450.0,
       height: 200.0,
@@ -73,7 +84,8 @@ class Info extends StatelessWidget {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: const Text("Xác nhận xóa"),
-                          content: const Text("Bạn có chắc muốn xóa người mượn này?"),
+                          content: const Text(
+                              "Bạn có chắc muốn xóa người mượn này?"),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -84,8 +96,10 @@ class Info extends StatelessWidget {
                             TextButton(
                               onPressed: () {
                                 // Xử lý xóa ở đây
-                                Provider.of<UserInterface>(context, listen: false)
+                                Provider.of<UserInterface>(context,
+                                        listen: false)
                                     .removeBorrower(borrower);
+                                _showDeleteSuccessSnackBar(); // Hiển thị thông báo xóa thành công
                                 Navigator.of(context).pop(); // Đóng hộp thoại
                               },
                               child: const Text("Xóa"),

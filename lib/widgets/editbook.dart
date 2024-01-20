@@ -52,6 +52,7 @@ class _EditBookPageState extends State<EditBookPage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          
           children: <Widget>[
             TextField(
               controller: _titleController,

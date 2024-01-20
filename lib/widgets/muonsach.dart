@@ -11,7 +11,9 @@ class Muonsach extends StatefulWidget {
 }
 
 class _MyApp2State extends State<Muonsach> {
+  bool successMessageShown = false;
   var searchQuery = " ";
+  bool isDarkMode = false; // Thêm thuộc tính isDarkMode
   List<Book> allBooks = [
     Book(
       title: 'Lập Trình Flutter',
@@ -78,6 +80,19 @@ class _MyApp2State extends State<Muonsach> {
       category: 'Ngôn ngữ lập trình',
     ),
   ];
+
+  // hiển thị tb
+  void _showSuccessSnackBar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text('Mượn sách thành công'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+    successMessageShown = true;
+  }
+
   List<Book> results = [];
 
   @override
@@ -148,7 +163,7 @@ class _MyApp2State extends State<Muonsach> {
                 setState(() {
                   selectedBook.quantity -= 1;
                 });
-
+                 _showSuccessSnackBar();
                 Navigator.of(context).pop();
               },
               child: const Text('Mượn sách'),
@@ -243,71 +258,76 @@ class _MyApp2State extends State<Muonsach> {
           centerTitle: true,
           backgroundColor: ui.appBarColor,
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                onChanged: (value) {
-                  setState(() {
-                    searchQuery = value;
-                    if (searchQuery.isEmpty) {
-                      results = allBooks;
-                    } else {
-                      results = allBooks
-                          .where((book) => book.title
-                              .toLowerCase()
-                              .contains(searchQuery.toLowerCase()))
-                          .toList();
-                    }
-                  });
-                },
-                decoration: InputDecoration(
-                  labelText: 'Tìm kiếm',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0),
+        body: Container(
+          color:
+              ui.isDarkMode ? const Color.fromARGB(255, 0, 0, 0) : Colors.white,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      searchQuery = value;
+                      if (searchQuery.isEmpty) {
+                        results = allBooks;
+                      } else {
+                        results = allBooks
+                            .where((book) => book.title
+                                .toLowerCase()
+                                .contains(searchQuery.toLowerCase()))
+                            .toList();
+                      }
+                    });
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Tìm kiếm',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    prefixIcon: const Icon(Icons.search),
                   ),
-                  prefixIcon: const Icon(Icons.search),
                 ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  var item = results[index];
-                  return ListTile(
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          item.title,
-                          style: const TextStyle(
-                            color:  Colors.black,
-                            fontSize: 18,
-                            fontFamily: 'nexaRegular',
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    var item = results[index];
+                    return ListTile(
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            item.title,
+                            style: TextStyle(
+                              color:
+                                  ui.isDarkMode ? Colors.white : Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'nexaRegular',
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Số lượng: ${item.quantity}',
-                          style: const TextStyle(
-                            color: Colors.red,
-                            fontSize: 14,
+                          Text(
+                            'Số lượng: ${item.quantity}',
+                            style: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    trailing: ElevatedButton(
-                      onPressed: () {
-                        _showDialog(item);
-                      },
-                      child: const Text('Mượn sách'),
-                    ),
-                  );
-                },
-                itemCount: results.length,
+                        ],
+                      ),
+                      trailing: ElevatedButton(
+                        onPressed: () {
+                          _showDialog(item);
+                        },
+                        child: const Text('Mượn sách'),
+                      ),
+                    );
+                  },
+                  itemCount: results.length,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     });
