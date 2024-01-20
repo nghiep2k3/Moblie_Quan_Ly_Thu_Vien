@@ -43,6 +43,7 @@ class UserInterface with ChangeNotifier {
   }
 
   double get fontSize => _fontSize;
+  //chứa danh sách search
   List<BorrowerInfo> borrowers = [];
   // nhận thông tin
   void addBorrower({
