@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import '../models/book.dart';
 import 'dart:io';
 
@@ -19,15 +20,24 @@ class _AddBookPageState extends State<AddBookPage> {
   final _categoryController = TextEditingController();
   final _coverImageController =
       TextEditingController(); // Used if you need to manually input the image URL
-  File? _image;
+  XFile? _image;
   final ImagePicker _picker = ImagePicker();
 
-  Future<void> _pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+  Future<void> _pickImage(ImageSource media) async {
+    final pickedFile = await _picker.pickImage(source: media);
     if (pickedFile != null) {
+      final dir = await getApplicationDocumentsDirectory();
+      final newImagePath =
+          '${dir.path}/images/news/${DateTime.now().microsecondsSinceEpoch}.png';
+      final imageDir = Directory('${dir.path}/images/news');
+      if (!imageDir.existsSync()) {
+        imageDir.createSync(recursive: true);
+      }
+      final File newImage = await File(pickedFile.path).copy(newImagePath);
       setState(() {
-        _image = File(pickedFile.path);
+        _image = XFile(newImagePath) ;
       });
+      //   await _saveImageToFolder();
     }
   }
 
@@ -58,16 +68,17 @@ class _AddBookPageState extends State<AddBookPage> {
               Container(
                 height: 200,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Color.fromARGB(255, 0, 0, 0)),
-                ),
-                child: Image.file(
-                  _image!,
-                  fit: BoxFit.cover,
+                  image: DecorationImage(
+                    image: FileImage(File(_image!.path)),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             SizedBox(height: 8),
             ElevatedButton(
-              onPressed: _pickImage,
+              onPressed: () {
+                _pickImage(ImageSource.gallery);
+              },
               child: Text('Chọn Ảnh Bìa'),
             ),
             SizedBox(height: 16),
