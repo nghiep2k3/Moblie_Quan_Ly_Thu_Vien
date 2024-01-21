@@ -6,38 +6,39 @@ class NewsList extends StatelessWidget {
   NewsList({super.key});
   final List<News> news = [
     News(
-        title: 'Lập Trình Flutter',
-        date: DateTime.parse('2021-06-23'),
+        title: 'Chương trình "Phát triển kĩ năng đọc trong thời đại 4.0"',
+        date: DateTime.parse('2024-01-11'),
         coverImage:
             "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png",
         description:
             "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."),
     News(
-        title: 'Lập Trình Flutter',
-        date: DateTime.parse('2021-06-23'),
+        title: 'Hướng dẫn đăng nhập tài khoản thư viện',
+        date: DateTime.parse('2024-01-05'),
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png",
+            "https://library.phenikaa-uni.edu.vn/sites/default/files/HD%20Dang%20nhap%20thu%20vien%20dien%20tu%20-%20thu%20vien%20so_1.png",
         description:
             "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."),
     News(
-        title: 'Lập Trình Flutter',
-        date: DateTime.parse('2021-06-23'),
+        title: 'Những góc đọc và tự học thật chill cùng thư viện Phenikaa Uni',
+        date: DateTime.parse('2023-12-29'),
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png",
+            "https://library.phenikaa-uni.edu.vn/sites/default/files/IMG_7624_1.JPG",
         description:
             "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."),
     News(
-        title: 'Lập Trình Flutter',
-        date: DateTime.parse('2021-06-23'),
+        title: 'Hội sách mùa thu phenikaa 2023 - gắn kết bạn đọc với sách',
+        date: DateTime.parse('2023-12-23'),
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png",
+            "https://library.phenikaa-uni.edu.vn/sites/default/files/phe7355.JPG",
         description:
             "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."),
     News(
-        title: 'Lập Trình Flutter',
-        date: DateTime.parse('2021-06-23'),
+        title:
+            'Khai trương Trung tâm thông tin thư viện mới - Thư viện chuẩn “Trường người ta” tại Phenikaa',
+        date: DateTime.parse('2023-08-14'),
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png",
+            "https://library.phenikaa-uni.edu.vn/sites/default/files/_PHE1294_0.JPG",
         description:
             "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."),
   ];
@@ -71,7 +72,8 @@ class NewsList extends StatelessWidget {
                       fontSize: 16,
                       overflow: TextOverflow.ellipsis,
                       height: 1.5),
-                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ),
               Text(DateFormat('dd/MM/yyyy').format(news[index].date),

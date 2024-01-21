@@ -17,12 +17,12 @@ class MyHomePage extends StatelessWidget {
       builder: (context, ui, child) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text(
-              "Trang chủ",
-              style: TextStyle(color: Color(0xffffffff)),
-            ),
-            backgroundColor: ui.appBarColor,
-          ),
+              title: const Text(
+                "Trang chủ",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+              backgroundColor: ui.appBarColor,
+              iconTheme: IconThemeData(color: Colors.white)),
           drawer: MyDrawer(),
           body: DefaultTextStyle.merge(
             style: TextStyle(
@@ -30,7 +30,9 @@ class MyHomePage extends StatelessWidget {
               color: ui.isDarkMode ? Colors.white : Colors.black,
             ),
             child: Container(
-                color: ui.isDarkMode ? const Color.fromARGB(255, 0, 0, 0) : Colors.white,
+                color: ui.isDarkMode
+                    ? const Color.fromARGB(255, 0, 0, 0)
+                    : Colors.white,
                 padding: EdgeInsets.all(20.0),
                 child: SingleChildScrollView(
                   child: Column(children: <Widget>[
@@ -39,23 +41,34 @@ class MyHomePage extends StatelessWidget {
                       height: 50,
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: "Tìm kiếm",
-                          prefixIcon: const Icon(Icons.search),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            labelText: "Tìm kiếm",
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color:
+                                  ui.isDarkMode ? Colors.white : Colors.black,
                             ),
-                          ),
-                          contentPadding: EdgeInsets.all(10),
-                        ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: BorderSide(
+                                color:
+                                    ui.isDarkMode ? Colors.white : Colors.black,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.all(10),
+                            labelStyle: TextStyle(
+                              color:
+                                  ui.isDarkMode ? Colors.white : Colors.black,
+                            ),
+                            floatingLabelBehavior: FloatingLabelBehavior.never),
+                        cursorColor:
+                            ui.isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 20),
+                      margin: const EdgeInsets.only(top: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -231,7 +244,7 @@ class MyHomePage extends StatelessWidget {
                                         //   ),
                                         onPressed: () {
                                           Navigator.pushNamed(
-                                              context, "/quanly");
+                                              context, "/quanly_tintuc");
                                         },
                                         child: const Row(
                                           crossAxisAlignment:
