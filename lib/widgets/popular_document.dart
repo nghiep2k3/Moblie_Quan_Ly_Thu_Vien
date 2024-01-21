@@ -6,25 +6,28 @@ class PopularDocument extends StatelessWidget {
   PopularDocument({super.key});
   final List<Document> documentList = [
     Document(
-        title: 'Lập Trình Flutter',
+        title: 'Giáo trình Lý thuyết xác suất và thống kê toán',
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png"),
+            "https://giaotrinhpdf.com/book_covers/2023/08/71c6c2c4f17d4e798cf4b678f7aa47d3.jpg"),
     Document(
-        title: 'Lập Trình Flutter',
+        title: 'Mạch xử lý tín hiệu y sinh',
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png"),
+            "https://images.nxbbachkhoa.vn/Picture/2023/4/26/image-20230426114619481.jpg"),
     Document(
-        title: 'Lập Trình Flutter',
+        title:
+            'Hackers IELTS Speaking Basic: Bộ sách luyện thi IELTS dành cho người mới bắt đầu có kèm giải thích đáp án chi tiết',
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png"),
+            "https://cdn0.fahasa.com/media/flashmagazine/images/page_images/hackers_ielts_basic___speaking/2021_05_10_08_53_47_1-390x510.jpg"),
     Document(
-        title: 'Lập Trình Flutter',
+        title:
+            'Hackers IELTS Reading Basic: Bộ sách luyện thi IELTS dành cho người mới bắt đầu có kèm giải thích đáp án chi tiết',
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png"),
+            "https://bizweb.dktcdn.net/100/468/166/products/966089ca-492c-427e-8579-0e7e8a745238.jpg?v=1677347698190"),
     Document(
-        title: 'Lập Trình Flutter',
+        title:
+            'Chẩn đoán, quản lý bệnh truyền nhiễm và nhiệt đới tại cộng đồng',
         coverImage:
-            "https://library.phenikaa-uni.edu.vn/sites/default/files/background%402x.png"),
+            "https://bizweb.dktcdn.net/thumb/1024x1024/100/371/634/products/3d3d06cf-1288-4021-8296-b78b5bf6459a.jpg?v=1588323962440"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -65,9 +68,11 @@ class PopularDocument extends StatelessWidget {
                             item.title,
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w500,
                             ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
                           ),
                         ),
                       ),

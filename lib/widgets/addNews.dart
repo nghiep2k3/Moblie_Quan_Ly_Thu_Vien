@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled4/models/user_interface.dart';
 import '../models/news.dart';
 
 class AddNews extends StatefulWidget {
@@ -48,52 +50,84 @@ class _AddNewsState extends State<AddNews> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Thêm Tin Tức'),
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            if (_image != null)
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: FileImage(File(_image!.path)),
-                    fit: BoxFit.cover,
+    return Consumer<UserInterface>(builder: (context, ui, child) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Thêm Tin Tức',
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+          backgroundColor: ui.appBarColor,
+          iconTheme: const IconThemeData(color: Colors.white),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(10.0),
+          color: ui.isDarkMode ? Colors.black : Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              if (_image != null)
+                Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: FileImage(File(_image!.path)),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              SizedBox(height: 15),
+              TextButton(
+                  onPressed: () {
+                    // Navigator.pop(context);
+                    _pickImage(ImageSource.gallery);
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        ui.isDarkMode ? Colors.white : Colors.blue),
+                  ),
+                  child: Text(
+                    'Chọn ảnh',
+                    style: TextStyle(
+                        color: ui.isDarkMode ? Colors.blue : Colors.white),
+                  )),
+              TextField(
+                  controller: _titleController,
+                  decoration: InputDecoration(
+                    labelText: 'Tiêu đề',
+                    labelStyle: TextStyle(
+                        color: ui.isDarkMode ? Colors.white : Colors.black),
+                    contentPadding: const EdgeInsets.only(
+                        top: 5, bottom: 5, left: 10, right: 10),
+                  )),
+              TextField(
+                controller: _descriptionController,
+                decoration: InputDecoration(
+                  labelText: 'Mô tả',
+                  labelStyle: TextStyle(
+                      color: ui.isDarkMode ? Colors.white : Colors.black),
+                  contentPadding: const EdgeInsets.only(
+                      top: 5, bottom: 5, left: 10, right: 10),
+                ),
+              ),
+              SizedBox(height: 50.0),
+              Center(
+                child: SizedBox(
+                  width: 200,
+                  child: ElevatedButton(
+                    onPressed: _addNews,
+                    child: Text(
+                      'Thêm',
+                      style: TextStyle(
+                          color: ui.isDarkMode ? Colors.blue : Colors.white),
+                    ),
                   ),
                 ),
               ),
-            TextButton(
-              onPressed: () {
-                // Navigator.pop(context);
-                _pickImage(ImageSource.gallery);
-              },
-              child: Text('Chọn ảnh'),
-            ),
-            TextField(
-              controller: _titleController,
-              decoration: InputDecoration(
-                labelText: 'Tiêu đề',
-              ),
-            ),
-            TextField(
-              controller: _descriptionController,
-              decoration: InputDecoration(
-                labelText: 'Mô tả',
-              ),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _addNews,
-              child: Text('Thêm'),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
