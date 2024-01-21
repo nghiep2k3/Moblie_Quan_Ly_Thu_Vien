@@ -231,7 +231,7 @@ class MyHomePage extends StatelessWidget {
                                         //   ),
                                         onPressed: () {
                                           Navigator.pushNamed(
-                                              context, "/quanly");
+                                              context, "/quanly_tintuc");
                                         },
                                         child: const Row(
                                           crossAxisAlignment:

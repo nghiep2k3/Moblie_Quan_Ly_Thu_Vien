@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import '../models/news.dart';
 
 class AddNews extends StatefulWidget {
@@ -14,14 +15,23 @@ class AddNews extends StatefulWidget {
 class _AddNewsState extends State<AddNews> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
-  File? _image;
+  XFile? _image;
   final ImagePicker _picker = ImagePicker();
-  Future<void> _pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+  Future<void> _pickImage(ImageSource media) async {
+    final pickedFile = await _picker.pickImage(source: media);
     if (pickedFile != null) {
+      final dir = await getApplicationDocumentsDirectory();
+      final newImagePath =
+          '${dir.path}/images/news/${DateTime.now().microsecondsSinceEpoch}.png';
+      final imageDir = Directory('${dir.path}/images/news');
+      if (!imageDir.existsSync()) {
+        imageDir.createSync(recursive: true);
+      }
+      final File newImage = await File(pickedFile.path).copy(newImagePath);
       setState(() {
-        _image = File(pickedFile.path);
+        _image = XFile(newImagePath);
       });
+      //   await _saveImageToFolder();
     }
   }
 
@@ -30,7 +40,7 @@ class _AddNewsState extends State<AddNews> {
       title: _titleController.text,
       date: DateTime.now(),
       coverImage: _image?.path ?? '',
-      description: _descriptionController.text ?? '',
+      description: _descriptionController.text,
     );
     widget.onAddNews(newNews);
     Navigator.of(context).pop();
@@ -52,13 +62,16 @@ class _AddNewsState extends State<AddNews> {
                 height: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: FileImage(_image!),
+                    image: FileImage(File(_image!.path)),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
             TextButton(
-              onPressed: _pickImage,
+              onPressed: () {
+                // Navigator.pop(context);
+                _pickImage(ImageSource.gallery);
+              },
               child: Text('Chọn ảnh'),
             ),
             TextField(

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -76,7 +78,7 @@ class _NewsManagementState extends State<NewsManagement> {
                 TextStyle(color: ui.isDarkMode ? Colors.white : Colors.black),
             child: Container(
               width: width,
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               color: ui.isDarkMode ? Colors.grey : Colors.white,
               child: ListView.builder(
                 itemCount: news.length,
@@ -108,12 +110,21 @@ class _NewsManagementState extends State<NewsManagement> {
                                   //   fit: BoxFit.cover,
                                   // ),
                                   child: news[index].coverImage != ''
-                                      ? Image.network(
-                                          news[index].coverImage,
-                                          width: 100,
-                                          height: 120,
-                                          fit: BoxFit.cover,
-                                        )
+                                      ? (news[index]
+                                              .coverImage
+                                              .contains('https://')
+                                          ? Image.network(
+                                              news[index].coverImage,
+                                              width: 100,
+                                              height: 120,
+                                              fit: BoxFit.cover,
+                                            )
+                                          : Image.file(
+                                              File(news[index].coverImage),
+                                              width: 100,
+                                              height: 120,
+                                              fit: BoxFit.cover,
+                                            ))
                                       : SizedBox(
                                           width: 100,
                                           height: 120,
@@ -121,9 +132,9 @@ class _NewsManagementState extends State<NewsManagement> {
                                             color: ui.isDarkMode
                                                 ? Colors.white
                                                 : Colors.grey,
-                                            child: Icon(Icons.image),
+                                            child: const Icon(Icons.image),
                                           ))),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20.0,
                               ),
                               Column(
@@ -132,16 +143,16 @@ class _NewsManagementState extends State<NewsManagement> {
                                 children: [
                                   Text(
                                     news[index].title,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10.0,
                                   ),
                                   Text(DateFormat('dd/MM/yyyy')
                                       .format(news[index].date)),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10.0,
                                   ),
                                   SizedBox(
@@ -150,14 +161,14 @@ class _NewsManagementState extends State<NewsManagement> {
                                       news[index].description,
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 3,
-                                      style: TextStyle(height: 1.5),
+                                      style: const TextStyle(height: 1.5),
                                     ),
                                   ),
                                 ],
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10.0,
                           )
                         ],
@@ -174,8 +185,9 @@ class _NewsManagementState extends State<NewsManagement> {
                 ),
               );
             },
-            child: Icon(Icons.add),
-            backgroundColor: ui.appBarColor,
+            backgroundColor: ui.isDarkMode ? Colors.white : Colors.grey,
+            foregroundColor: ui.isDarkMode ? Colors.black : Colors.white,
+            child: const Icon(Icons.add),
           ));
     });
   }
