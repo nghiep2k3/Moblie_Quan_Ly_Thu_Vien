@@ -87,7 +87,7 @@ class _ManagementPage extends State<ManagementPage> {
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: width > 600 ? 3 : 2, // Adjust the number of columns based on screen width
-          childAspectRatio: (1 / 1.9), // Adjust the aspect ratio
+          childAspectRatio: (1 / 1.5), // Adjust the aspect ratio
         ),
         itemCount: books.length,
         itemBuilder: (context, index) {
