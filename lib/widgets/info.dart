@@ -30,6 +30,7 @@ class Info extends StatelessWidget {
                     itemCount: ui.borrowers.length,
                     itemBuilder: (context, index) {
                       BorrowerInfo borrower = ui.borrowers[index];
+                      print(ui.borrowers[index]);
                       return buildBorrowerCard(context, borrower);
                     },
                   ),
@@ -41,6 +42,7 @@ class Info extends StatelessWidget {
 
   Widget buildBorrowerCard(BuildContext context, BorrowerInfo borrower) {
     bool deleteSuccessMessageShown = false;
+    
     void _showDeleteSuccessSnackBar() {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
