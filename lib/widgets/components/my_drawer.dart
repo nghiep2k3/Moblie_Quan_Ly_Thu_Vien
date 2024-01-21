@@ -19,6 +19,12 @@ class MyDrawer extends StatelessWidget {
             onTap: () => Navigator.of(context).popAndPushNamed("/quanly"),
           ),
           ListTile(
+            leading: const Icon(Icons.newspaper),
+            title: const Text("Quản lý tin tức"),
+            onTap: () =>
+                Navigator.of(context).popAndPushNamed("/quanly_tintuc"),
+          ),
+          ListTile(
             leading: const Icon(Icons.library_books),
             title: const Text("Mượn sách"),
             onTap: () => Navigator.of(context).popAndPushNamed("/muonsach"),
@@ -40,7 +46,7 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.developer_board),
-            title: const Text("Test"),
+            title: const Text("Chế độ nhà phát triển"),
             onTap: () => Navigator.of(context).popAndPushNamed("/testcode"),
           ),
         ],

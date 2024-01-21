@@ -130,75 +130,158 @@ class _MyApp2State extends State<MyApp2> {
   }
 
   @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: const Text('Mượn sách'),
+  //       centerTitle: true,
+  //       backgroundColor: Colors.purple,
+  //     ),
+  //     body: Column(
+  //       children: [
+  //         Padding(
+  //           padding: const EdgeInsets.all(8.0),
+  //           child: TextField(
+  //             onChanged: (value) {
+  //               setState(() {
+  //                 searchQuery = value;
+  //                 if (searchQuery.isEmpty) {
+  //                   results = allBooks;
+  //                 } else {
+  //                   results = allBooks
+  //                       .where((book) => book.title
+  //                           .toLowerCase()
+  //                           .contains(searchQuery.toLowerCase()))
+  //                       .toList();
+  //                 }
+  //               });
+  //             },
+  //             decoration: InputDecoration(
+  //               labelText: 'Tìm kiếm',
+  //               border: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(12.0),
+  //               ),
+  //               prefixIcon: const Icon(Icons.search),
+  //             ),
+  //           ),
+  //         ),
+  //         Expanded(
+  //           child: ListView.builder(
+  //             itemBuilder: (BuildContext context, int index) {
+  //               var item = results[index];
+  //               return ListTile(
+  //                 title: Column(
+  //                   crossAxisAlignment: CrossAxisAlignment.start,
+  //                   children: [
+  //                     Text(
+  //                       item.title,
+  //                       style: const TextStyle(
+  //                         color: Colors.red,
+  //                         fontSize: 18,
+  //                         fontFamily: 'nexaRegular',
+  //                       ),
+  //                     ),
+  //                     Text(
+  //                       'Số lượng: ${item.quantity}',
+  //                       style: const TextStyle(
+  //                         color: Colors.black,
+  //                         fontSize: 14,
+  //                       ),
+  //                     ),
+  //                   ],
+  //                 ),
+  //                 trailing: ElevatedButton(
+  //                   onPressed: () {
+  //                     _showDialog(item);
+  //                   },
+  //                   child: const Text('Mượn sách'),
+  //                 ),
+  //               );
+  //             },
+  //             itemCount: results.length,
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Mượn sách')),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              onChanged: (value) {
-                setState(() {
-                  searchQuery = value;
-                  if (searchQuery.isEmpty) {
-                    results = allBooks;
-                  } else {
-                    results = allBooks
-                        .where((book) => book.title
-                            .toLowerCase()
-                            .contains(searchQuery.toLowerCase()))
-                        .toList();
-                  }
-                });
-              },
-              decoration: InputDecoration(
-                labelText: 'Tìm kiếm',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
+    return Consumer<UserInterface>(
+      builder: (context, ui, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Nhà phát triển'),
+            centerTitle: true,
+            backgroundColor: ui.appBarColor,
+          ),
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      searchQuery = value;
+                      if (searchQuery.isEmpty) {
+                        results = allBooks;
+                      } else {
+                        results = allBooks
+                            .where((book) => book.title
+                                .toLowerCase()
+                                .contains(searchQuery.toLowerCase()))
+                            .toList();
+                      }
+                    });
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Tìm kiếm',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    prefixIcon: const Icon(Icons.search),
+                  ),
                 ),
-                prefixIcon: const Icon(Icons.search),
               ),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                var item = results[index];
-                return ListTile(
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item.title,
-                        style: const TextStyle(
-                          color: Colors.red,
-                          fontSize: 18,
-                          fontFamily: 'nexaRegular',
-                        ),
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    var item = results[index];
+                    return ListTile(
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            item.title,
+                            style: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 18,
+                              fontFamily: 'nexaRegular',
+                            ),
+                          ),
+                          Text(
+                            'Số lượng: ${item.quantity}',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Số lượng: ${item.quantity}',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
+                      trailing: ElevatedButton(
+                        onPressed: () {
+                          _showDialog(item);
+                        },
+                        child: const Text('Mượn sách'),
                       ),
-                    ],
-                  ),
-                  trailing: ElevatedButton(
-                    onPressed: () {
-                      _showDialog(item);
-                    },
-                    child: const Text('Mượn sách'),
-                  ),
-                );
-              },
-              itemCount: results.length,
-            ),
+                    );
+                  },
+                  itemCount: results.length,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      }
     );
   }
 }

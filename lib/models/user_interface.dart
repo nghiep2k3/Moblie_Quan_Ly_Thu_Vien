@@ -12,6 +12,7 @@ class UserInterface with ChangeNotifier {
 
   double _fontSize = 15;
   String _appBarColor = 'Grey';
+  bool _isDarkMode = false;
 
   set appBarColor(newColor) {
     _appBarColor = newColor;
@@ -43,6 +44,12 @@ class UserInterface with ChangeNotifier {
   }
 
   double get fontSize => _fontSize;
+  set isDarkMode(newMode) {
+    _isDarkMode = newMode;
+    notifyListeners();
+  }
+
+  bool get isDarkMode => _isDarkMode;
   List<BorrowerInfo> borrowers = [];
   // nhận thông tin
   void addBorrower({
