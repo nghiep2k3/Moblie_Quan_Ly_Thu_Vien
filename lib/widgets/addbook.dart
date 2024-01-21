@@ -58,7 +58,7 @@ class _AddBookPageState extends State<AddBookPage> {
               Container(
                 height: 200,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: Color.fromARGB(255, 0, 0, 0)),
                 ),
                 child: Image.file(
                   _image!,

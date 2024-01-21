@@ -19,7 +19,7 @@ class MySettings extends StatelessWidget {
             color: ui.isDarkMode ? Colors.white : Colors.black,
           ),
           child: Container(
-            color: ui.isDarkMode ? Colors.grey : Colors.white,
+            color: ui.isDarkMode ? Color.fromARGB(255, 0, 0, 0) : Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -38,7 +38,7 @@ class MySettings extends StatelessWidget {
                   },
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
                       "AppBar color:",
@@ -58,7 +58,7 @@ class MySettings extends StatelessWidget {
                             color: ui.isDarkMode ? Colors.white : Colors.black,
                           ),
                           dropdownColor:
-                              ui.isDarkMode ? Colors.grey : Colors.white,
+                              ui.isDarkMode ? Color.fromARGB(255, 0, 0, 0) : Colors.white,
                           items: UserInterface.listColorAppBar
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
@@ -75,10 +75,10 @@ class MySettings extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
-                        "Theme:",
+                        "Dark mode:",
                         style: TextStyle(
                           fontSize: 20,
                         ),

@@ -11,7 +11,9 @@ class Muonsach extends StatefulWidget {
 }
 
 class _MyApp2State extends State<Muonsach> {
+  bool successMessageShown = false;
   var searchQuery = " ";
+  bool isDarkMode = false; // Thêm thuộc tính isDarkMode
   List<Book> allBooks = [
     Book(
       title: 'Lập Trình Flutter',
@@ -78,6 +80,19 @@ class _MyApp2State extends State<Muonsach> {
       category: 'Ngôn ngữ lập trình',
     ),
   ];
+
+  // hiển thị tb
+  void _showSuccessSnackBar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text('Mượn sách thành công'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+    successMessageShown = true;
+  }
+
   List<Book> results = [];
 
   @override
@@ -148,7 +163,7 @@ class _MyApp2State extends State<Muonsach> {
                 setState(() {
                   selectedBook.quantity -= 1;
                 });
-
+                 _showSuccessSnackBar();
                 Navigator.of(context).pop();
               },
               child: const Text('Mượn sách'),
@@ -244,7 +259,8 @@ class _MyApp2State extends State<Muonsach> {
           backgroundColor: ui.appBarColor,
         ),
         body: Container(
-          color: ui.isDarkMode ? Colors.grey : Colors.white,
+          color:
+              ui.isDarkMode ? const Color.fromARGB(255, 0, 0, 0) : Colors.white,
           child: Column(
             children: [
               Padding(
