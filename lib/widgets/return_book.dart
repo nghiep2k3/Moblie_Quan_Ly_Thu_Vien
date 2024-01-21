@@ -171,7 +171,7 @@ class _ReturnBookState extends State<ReturnBook> {
                                   showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(
-                                      title: Text('Trả sách'),
+                                      title: const Text('Trả sách'),
                                       content: Text(
                                           'Bạn có muốn trả sách "${selectedBook.title}"?'),
                                       actions: [
@@ -187,7 +187,6 @@ class _ReturnBookState extends State<ReturnBook> {
                                         ),
                                         TextButton(
                                           onPressed: () {
-                                            // Perform return book action
                                             setState(() {
                                               borrowedBooks.removeAt(index);
                                               selectedBook = null;
@@ -207,54 +206,12 @@ class _ReturnBookState extends State<ReturnBook> {
                                     ),
                                   );
                                 },
-                                child: Text('Trả sách'),
+                                child: const Text('Trả sách'),
                               )
                             ],
                           ),
                         ),
                       );
-                      // return
-                      //   return ListTile(
-                      //     title: Text(borrowedBooks[index]),
-                      //     onTap: () {
-                      //       setState(() {
-                      //         selectedBook = borrowedBooks[index];
-                      //       });
-                      //       showDialog(
-                      //         context: context,
-                      //         builder: (context) => AlertDialog(
-                      //           title: Text('Trả sách'),
-                      //           content:
-                      //               Text('Bạn có muốn trả sách "$selectedBook"?'),
-                      //           actions: [
-                      //             TextButton(
-                      //               onPressed: () {
-                      //                 Navigator.of(context).pop();
-                      //               },
-                      //               child: Text('Không'),
-                      //             ),
-                      //             TextButton(
-                      //               onPressed: () {
-                      //                 // Perform return book action
-                      //                 setState(() {
-                      //                   borrowedBooks.removeAt(index);
-                      //                   selectedBook = null;
-                      //                 });
-                      //                 Navigator.of(context).pop();
-                      //               },
-                      //               style: ButtonStyle(
-                      //                 backgroundColor:
-                      //                     MaterialStateProperty.all<Color>(
-                      //                         Colors.red),
-                      //               ),
-                      //               child: const Text('Có',
-                      //                   style: TextStyle(color: Colors.white)),
-                      //             )
-                      //           ],
-                      //         ),
-                      //       );
-                      //     },
-                      //   );
                     },
                   ),
                 ),
