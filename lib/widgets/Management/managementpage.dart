@@ -1,9 +1,8 @@
 import 'dart:io';
-import 'package:intl/intl.dart';
-import 'package:untitled4/widgets/addbook.dart';
-import 'package:untitled4/widgets/editbook.dart';
+import 'package:untitled4/widgets/Action/addbook.dart';
+import 'package:untitled4/widgets/Action/editbook.dart';
 import 'package:flutter/material.dart';
-import '../models/book.dart';
+import '../../models/book.dart';
 
 
 
@@ -91,9 +90,7 @@ class _ManagementPage extends State<ManagementPage> {
         itemCount: books.length,
         itemBuilder: (context, index) {
           final book = books[index];
-          // Tính toán kích thước ảnh dựa trên kích thước màn hình
-          double screenWidth = MediaQuery.of(context).size.width;
-          double imageHeight = screenWidth / 3; // Ví dụ: chiều cao ảnh = 1/3 chiều rộng màn hình
+
           return Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0), // Rounded corners

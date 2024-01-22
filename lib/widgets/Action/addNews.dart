@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/models/user_interface.dart';
-import '../models/news.dart';
+import '../../models/news.dart';
 
 class AddNews extends StatefulWidget {
   const AddNews({super.key, required this.onAddNews});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/book.dart';
+import '../../models/book.dart';
 
 class EditBookPage extends StatefulWidget {
   final Book book;
