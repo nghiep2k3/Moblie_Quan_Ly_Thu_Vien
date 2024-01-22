@@ -1,7 +1,7 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled4/models/news.dart';
-import 'package:untitled4/widgets/news_list.dart';
-import 'package:untitled4/widgets/popular_document.dart';
+import 'package:untitled4/widgets/components/news_list.dart';
+import 'package:untitled4/widgets/components/popular_document.dart';
 
 import '/widgets/components/my_drawer.dart';
 import '/models/user_interface.dart';

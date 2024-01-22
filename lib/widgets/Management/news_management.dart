@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/models/news.dart';
 import 'package:untitled4/models/user_interface.dart';
-import 'package:untitled4/widgets/addNews.dart';
+import 'package:untitled4/widgets/Action/addNews.dart';
 
 class NewsManagement extends StatefulWidget {
   const NewsManagement({super.key});

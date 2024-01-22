@@ -15,3 +15,86 @@ class Book {
     this.borrowedDate,
   });
 }
+
+List<Book> borrowedBooks = [
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+  Book(
+      title: 'Lập Trình Flutter',
+      coverImage:
+      'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+      author: '',
+      quantity: 10,
+      category: 'Kỹ thuật phần mềm',
+      borrowedDate: DateTime.parse('2021-10-10')),
+];

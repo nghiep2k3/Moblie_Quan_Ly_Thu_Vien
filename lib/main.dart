@@ -1,15 +1,15 @@
 import 'package:untitled4/testcode.dart';
-import 'package:untitled4/widgets/news_list.dart';
-import 'package:untitled4/widgets/news_management.dart';
-import 'package:untitled4/widgets/return_book.dart';
-import './widgets/addbook.dart';
-import '../widgets/managementpage.dart';
+import 'package:untitled4/widgets/components/news_list.dart';
+import 'package:untitled4/widgets/Management/news_management.dart';
+import 'package:untitled4/widgets/Action/return_book.dart';
+import 'widgets/Action/addbook.dart';
+import 'widgets/Management/managementpage.dart';
 import '/widgets/homepage.dart';
 import '/widgets/settings.dart';
 import '/models/user_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './widgets/muonsach.dart';
+import 'widgets/Action/muonsach.dart';
 import './widgets/info.dart';
 
 
