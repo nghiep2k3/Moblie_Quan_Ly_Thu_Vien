@@ -15,72 +15,72 @@ class _MyApp2State extends State<Muonsach> {
   var searchQuery = " ";
   bool isDarkMode = false; // Thêm thuộc tính isDarkMode
   
-  List<Book> allBooks = [
-    Book(
-      title: 'Lập Trình Flutter',
-      author: 'Nguyễn Văn A',
-      coverImage:
-          'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 10,
-      category: 'Kỹ thuật phần mềm',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao',
-      author: 'Trần Thị B',
-      coverImage:
-          'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao 2',
-      author: 'Trần Thị B',
-      coverImage:
-          'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao 3',
-      author: 'Trần Thị B',
-      coverImage:
-          'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-    Book(
-      title: 'Lập Trình Flutter',
-      author: 'Nguyễn Văn A',
-      coverImage:
-          'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 10,
-      category: 'Kỹ thuật phần mềm',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao',
-      author: 'Trần Thị B',
-      coverImage:
-          'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao 2',
-      author: 'Trần Thị B',
-      coverImage:
-          'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao 3',
-      author: 'Trần Thị B',
-      coverImage:
-          'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-  ];
+  // List<Book> borrowedBooks = [
+  //   Book(
+  //     title: 'Lập Trình Flutter',
+  //     author: 'Nguyễn Văn A',
+  //     coverImage:
+  //         'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 10,
+  //     category: 'Kỹ thuật phần mềm',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao',
+  //     author: 'Trần Thị B',
+  //     coverImage:
+  //         'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao 2',
+  //     author: 'Trần Thị B',
+  //     coverImage:
+  //         'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao 3',
+  //     author: 'Trần Thị B',
+  //     coverImage:
+  //         'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  //   Book(
+  //     title: 'Lập Trình Flutter',
+  //     author: 'Nguyễn Văn A',
+  //     coverImage:
+  //         'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 10,
+  //     category: 'Kỹ thuật phần mềm',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao',
+  //     author: 'Trần Thị B',
+  //     coverImage:
+  //         'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao 2',
+  //     author: 'Trần Thị B',
+  //     coverImage:
+  //         'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao 3',
+  //     author: 'Trần Thị B',
+  //     coverImage:
+  //         'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  // ];
 
   // hiển thị tb
   void _showSuccessSnackBar() {
@@ -99,7 +99,7 @@ class _MyApp2State extends State<Muonsach> {
   @override
   void initState() {
     super.initState();
-    results = allBooks;
+    results = borrowedBooks;
   }
 
   Future<void> _showDialog(Book selectedBook) async {
@@ -192,9 +192,9 @@ class _MyApp2State extends State<Muonsach> {
   //               setState(() {
   //                 searchQuery = value;
   //                 if (searchQuery.isEmpty) {
-  //                   results = allBooks;
+  //                   results = borrowedBooks;
   //                 } else {
-  //                   results = allBooks
+  //                   results = borrowedBooks
   //                       .where((book) => book.title
   //                           .toLowerCase()
   //                           .contains(searchQuery.toLowerCase()))
@@ -271,9 +271,9 @@ class _MyApp2State extends State<Muonsach> {
                     setState(() {
                       searchQuery = value;
                       if (searchQuery.isEmpty) {
-                        results = allBooks;
+                        results = borrowedBooks;
                       } else {
-                        results = allBooks
+                        results = borrowedBooks
                             .where((book) => book.title
                                 .toLowerCase()
                                 .contains(searchQuery.toLowerCase()))

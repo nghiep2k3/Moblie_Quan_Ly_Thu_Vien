@@ -13,40 +13,40 @@ class ManagementPage extends StatefulWidget {
 }
 
 class _ManagementPage extends State<ManagementPage> {
-  List<Book> books = [
-    Book(
-      title: 'Lập Trình Flutter',
-      author: 'Nguyễn Văn A',
-      coverImage: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg",
-      quantity: 10,
-      category: 'Kỹ thuật phần mềm',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao',
-      author: 'Trần Thị B',
-      coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao',
-      author: 'Trần Thị B',
-      coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-    Book(
-      title: 'Học Dart từ cơ bản đến nâng cao',
-      author: 'Trần Thị B',
-      coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
-      quantity: 5,
-      category: 'Ngôn ngữ lập trình',
-    ),
-  ]; // Danh sách sách và tài liệu
+  // List<Book> borrowedBooks = [
+  //   Book(
+  //     title: 'Lập Trình Flutter',
+  //     author: 'Nguyễn Văn A',
+  //     coverImage: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg",
+  //     quantity: 10,
+  //     category: 'Kỹ thuật phần mềm',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao',
+  //     author: 'Trần Thị B',
+  //     coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao',
+  //     author: 'Trần Thị B',
+  //     coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  //   Book(
+  //     title: 'Học Dart từ cơ bản đến nâng cao',
+  //     author: 'Trần Thị B',
+  //     coverImage: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/06/Sach-hay.jpg',
+  //     quantity: 5,
+  //     category: 'Ngôn ngữ lập trình',
+  //   ),
+  // ]; // Danh sách sách và tài liệu
 
   void _addBook(Book book) {
     setState(() {
-      books.add(book);
+      borrowedBooks.add(book);
     });
   }
 
@@ -69,7 +69,7 @@ class _ManagementPage extends State<ManagementPage> {
 
   @override
   Widget build(BuildContext context) {
-    int totalQuantity = books.fold(0, (sum, book) => sum + book.quantity);
+    int totalQuantity = borrowedBooks.fold(0, (sum, book) => sum + book.quantity);
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -87,9 +87,9 @@ class _ManagementPage extends State<ManagementPage> {
           crossAxisCount: width > 600 ? 3 : 2, // Adjust the number of columns based on screen width
           childAspectRatio: (1 / 1.7), // Adjust the aspect ratio
         ),
-        itemCount: books.length,
+        itemCount: borrowedBooks.length,
         itemBuilder: (context, index) {
-          final book = books[index];
+          final book = borrowedBooks[index];
 
           return Card(
             shape: RoundedRectangleBorder(
@@ -141,7 +141,7 @@ class _ManagementPage extends State<ManagementPage> {
                     IconButton(
                       icon: Icon(Icons.edit),
                       onPressed: () {
-                        _editBook(books[index]);
+                        _editBook(borrowedBooks[index]);
                       },
                     ),
                     IconButton(
@@ -164,7 +164,7 @@ class _ManagementPage extends State<ManagementPage> {
                                   child: Text('Xóa'),
                                   onPressed: () {
                                     setState(() {
-                                      books.removeAt(index); // Xóa sách tại vị trí index
+                                      borrowedBooks.removeAt(index); // Xóa sách tại vị trí index
                                       Navigator.of(context).pop(); // Đóng hộp thoại sau khi xóa
                                     });
                                   },
